@@ -1,4 +1,4 @@
-# Mercurial prompt support
+# bash hg prompt support
 #
 # Copyright (c) 2018 Stephane Moore
 # Distributed under the MIT License.
