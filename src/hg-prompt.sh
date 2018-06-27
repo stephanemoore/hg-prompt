@@ -2,6 +2,15 @@
 #
 # Copyright (c) 2018 Stephane Moore
 # Distributed under the MIT License.
+#
+# To enable:
+#
+#    1) Copy this file to somewhere (e.g. ~/.hg-prompt.sh).
+#    2) Add the following line to your .bashrc:
+#        source ~/.hg-prompt.sh
+#    3) Change your PS1 to call __hg_ps1:
+#       Bash: PS1='[\u@\h \W$(__hg_ps1 " (%s)")]\$ '
+#       the optional argument will be used as format string.
 
 # Constructs a prompt string for the Mercurial repository containing the current working directory
 # or nothing if the current working directory is not within a Mercurial repository.
