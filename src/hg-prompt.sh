@@ -23,6 +23,11 @@ __hg_ps1() {
     return ${exit_code}
   fi
 
+  local printf_format=" (%s)"
+  if [ "$#" -ge 1 ]; then
+    printf_format="$1"
+  fi
+
   # Show * for modified files, + for added files, and % for untracked files.
   local hg_display_modifiers=""
   local hg_status_summary="$(hg status | cut -c 1)"
