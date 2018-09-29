@@ -71,7 +71,7 @@ __hg_ps1() {
   fi
 
   # In the absence of other information, simply display the changeset identifier.
-  local hg_changeset_id_hash="$(hg log -r . --template '({node})')"
+  local hg_changeset_id_hash="$(hg log -r . --template '({node|short})')"
   hg_prompt="${hg_changeset_id_hash}${hg_prompt}"
   printf -- "$1" "${hg_prompt}"
   return ${exit_code}
