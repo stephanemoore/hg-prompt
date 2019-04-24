@@ -14,6 +14,10 @@
 
 # Constructs a prompt string for the Mercurial repository containing the current working directory
 # or nothing if the current working directory is not within a Mercurial repository.
+#
+# If the HG_PS1_TAGSTEMPLATE environment variable is set, tags will be
+# retrieved using the specified template for tags. If this environment
+# variable is not set, the template "{tags}" will be used.
 __hg_ps1() {
   local exit_code=$?
 
@@ -57,7 +61,8 @@ __hg_ps1() {
   fi
 
   # Check for a tag on the current commit.
-  local hg_tags="$(hg log -r . --template '{tags}')"
+  local hg_tags_template="${HG_PS1_TAGSTEMPLATE-{tags}}"
+  local hg_tags="$(hg log -r . --template "${hg_tags_template}")"
   local hg_tag_array=( $hg_tags )
   if [ ${#hg_tag_array[@]} -ne 0 ]; then
     for hg_tag in "${hg_tag_array[@]}"
