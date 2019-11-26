@@ -61,7 +61,8 @@ __hg_ps1() {
   fi
 
   # Check for a tag on the current commit.
-  local hg_tags_template="${HG_PS1_TAGSTEMPLATE-{tags}}"
+  local hg_default_tags_template="{tags}"
+  local hg_tags_template="${HG_PS1_TAGSTEMPLATE-$hg_default_tags_template}"
   local hg_tags="$(hg log -r . --template "${hg_tags_template}")"
   local hg_tag_array=( $hg_tags )
   if [ ${#hg_tag_array[@]} -ne 0 ]; then
